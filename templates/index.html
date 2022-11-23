@@ -1,0 +1,355 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.104.2">
+    <title>World Cup 2022 Tracker</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+
+    <meta name="theme-color" content="#712cf9">
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+    </style>
+  </head>
+  <body>
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="check" viewBox="0 0 16 16">
+    <title>Check</title>
+    <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+  </symbol>
+</svg>
+
+<div class="container py-3">
+  <header>
+    <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
+      <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/e/e3/2022_FIFA_World_Cup.svg/1200px-2022_FIFA_World_Cup.svg.png" style="margin-right: 10px" height="60px"/>
+        <span class="fs-4">World Cup 2022 Live Tracker</span>
+      </a>
+
+      <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+        <a class="me-3 py-2 text-dark text-decoration-none" href="https://github.com/kaissb/">Visit My GitHub</a>
+        <a class="me-3 py-2 text-dark text-decoration-none" href="https://pychronicles.medium.com/">Visit PyChronicles Blog</a>
+        <a class="me-3 py-2 text-dark text-decoration-none" href="https://linkedin.com/in/kaissbouali">Visit My LinkedIn</a>
+        <a class="py-2 text-dark text-decoration-none" href="https://business.fiverr.com/kbouali">Hire Me!</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    {% if _matches_current %}
+    {% for m in _matches_current %}
+    <div class="row row-cols-1 row-cols-md-1 mb-3 text-center">
+        <div class="col">
+          <div class="card mb-4 rounded-3 shadow-sm">
+            <div class="card-header py-3">
+              <h4 class="my-0 fw-normal">Current Games!</h4>
+            </div>
+            <div class="card-body">
+                <div class="row row-cols-1 row-cols-md-2 mb-3 text-center">
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <p>Time: <strong>{{ m.time }}</strong></p> 
+                                <p>Humidity: <strong>{{ m.weather.humidity }}</strong></p> 
+                                <p>Temperature: <strong>{{ m.weather.temp_celsius }} °C</strong></p> 
+                                <p>State: <strong>{{ m.weather.description }}</strong></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="card">
+                            <div class="card-body">
+                                <p>Referee: <strong>{% for r in m.officials %}{% if r.role == "Referee" %}{{ r.name }} ({{ r.country }}){% endif %}{% endfor %}</strong></p> 
+                                <p>Assistant Referee 1: <strong>{% for r in m.officials %}{% if r.role == "Assistant Referee 1" %}{{ r.name }} ({{ r.country }}){% endif %}{% endfor %}</strong></p> 
+                                <p>Assistant Referee 2: <strong>{% for r in m.officials %}{% if r.role == "Assistant Referee 2" %}{{ r.name }} ({{ r.country }}){% endif %}{% endfor %}</strong></p> 
+                                <p>Fourth official: <strong>{% for r in m.officials %}{% if r.role == "Fourth official" %}{{ r.name }} ({{ r.country }}){% endif %}{% endfor %}</strong></p> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row row-cols-1 row-cols-md-2 mb-3 text-center">
+                  <div class="col">
+                    <div class="card mb-4 rounded-3 shadow-sm {% if m.home_team.goals > m.away_team.goals %}border-primary{% endif %}">
+                      <div class="card-header py-3  {% if m.home_team.goals > m.away_team.goals %}text-bg-primary border-primary{% endif %}">
+                        <h4 class="my-0 fw-normal">{{ m.home_team.name }}</h4><h6 class="card-title pricing-card-title">{{ m.home_team_lineup.tactics }}</h6>
+                      </div>
+                      <div class="card-body">
+                        <h1 class="card-title pricing-card-title">{{ m.home_team.goals }}</h1>
+                        
+                      </div>
+                    </div>
+                    <h6>Players:</h6>
+                        <ul class="list-unstyled mt-3 mb-4">
+                            {% for p in m.home_team_lineup.starting_eleven %}
+                            <li><strong>{{ p.name }}</strong> ({{ p.shirt_number }}) - {{ p.position }}</li>
+                            {% endfor %}
+                        </ul>
+                    <h6>Goals:</h6>
+                    {% if m.home_team_events %}
+                        <ul class="list-unstyled mt-3 mb-4">
+                            {% for p in m.home_team_events %}
+                            <li>{% if p.type_of_event == "goal" %} {{ p.player }} - {{ p.time }} {% endif %}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                    <h6>Substitutions:</h6>
+                    {% if m.home_team_events %}
+                        <ul class="list-unstyled mt-3 mb-4">
+                            {% for p in m.home_team_events %}
+                            <li>{% if p.type_of_event == "substitution" %} {{ p.player }} - {{ p.time }} {% endif %}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                  </div>
+                  <div class="col">
+                    <div class="card mb-4 rounded-3 shadow-sm {% if m.away_team.goals > m.home_team.goals %}border-primary{% endif %}">
+                        <div class="card-header py-3  {% if m.away_team.goals > m.home_team.goals %}text-bg-primary border-primary{% endif %}">
+                        <h4 class="my-0 fw-normal">{{ m.away_team.name }}</h4>
+                      </div>
+                      <div class="card-body">
+                        <h1 class="card-title pricing-card-title">{{ m.away_team.goals }}</h1>
+                        <h6 class="card-title pricing-card-title">{{ m.away_team_lineup.tactics }}</h6>
+                      </div>
+                    </div>
+                    <h6>Players:</h6>
+                        <ul class="list-unstyled mt-3 mb-4">
+                            {% for p in m.away_team_lineup.starting_eleven %}
+                            <li><strong>{{ p.name }}</strong> ({{ p.shirt_number }}) - {{ p.position }}</li>
+                            {% endfor %}
+                        </ul>
+                    <h6>Goals:</h6>
+                    {% if m.away_team_events %}
+                        <ul class="list-unstyled mt-3 mb-4">
+                            {% for p in m.away_team_events %}
+                            <li>{% if p.type_of_event == "goal" %} {{ p.player }} - {{ p.time }} {% endif %}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                    <h6>Substitutions:</h6>
+                    {% if m.away_team_events %}
+                        <ul class="list-unstyled mt-3 mb-4">
+                            {% for p in m.away_team_events %}
+                            <li>{% if p.type_of_event == "substitution" %} {{ p.player }} - {{ p.time }} {% endif %}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                  </div>
+                </div>
+                
+            </div>
+          </div>
+        </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <div class="row row-cols-1 row-cols-md-1 mb-3 text-center">
+        <div class="col">
+            <div class="card mb-4 rounded-3 shadow-sm">
+            <div class="card-header py-3">
+                <h4 class="my-0 fw-normal">No Score Available</h4>
+            </div>
+            <div class="card-body">
+                <h1 class="card-title pricing-card-title">No<small class="text-muted fw-light"> current match</small></h1>
+            </div>
+            </div>
+        </div>
+        </div>
+    {% endif %}
+    
+    
+      <h2 class="display-6 text-center mb-4">Today's Matches</h2>
+
+    <div class="table-responsive">
+        <table class="table text-center">
+          <thead>
+              <tr>
+                  <th style="width: 34%;"></th>
+                  <th style="width: 22%;">Home Team</th>
+                  <th style="width: 22%;">Score</th>
+                  <th style="width: 22%;">Away Team</th>
+              </tr>
+          </thead>
+          <tbody>
+              {% for m in _matches_today %}
+              <tr>
+                <th scope="row" class="text-start">{{ m.datetime[:10] }}</th>
+                    <td>
+                        {% if m.stage_name == "Quarter-final" %} Quarter Finalist 1 
+                        {% elif m.stage_name == "Round of 16" %} Round of 16
+                        {% elif m.stage_name == "Semi-final" %} Semi Finalist 1 
+                        {% elif m.stage_name == "Play-off for third place" %} Play-off for third place
+                        {% elif m.stage_name == "Final" %} Finalist 1 
+                        {% elif m.home_team_country == m.winner_code %} <span style="color:green;font-weight:600;">{{ m.home_team.name }}</span>
+                        {% elif m.away_team_country == m.winner_code %} <span style="color:red;font-weight:400;">{{ m.home_team.name }}</span>
+                        {% elif m.winner == "Draw" %} <span class="text-secondary">{{ m.home_team.name }}</span>
+                        {% else %}
+                        {{ m.home_team.name }} 
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if m.status == "completed" %}
+                        {% if m.home_team_country == m.winner_code %} <span class="badge text-bg-success">{{ m.home_team.goals }}</span>
+                        {% elif m.away_team_country == m.winner_code %} <span class="badge text-bg-danger">{{ m.home_team.goals }}</span>
+                        {% elif m.winner == "Draw" %} <span class="badge text-bg-secondary">{{ m.home_team.goals }}</span>{% endif %}
+                        {% if m.home_team.penalties != 0 %} ({{ m.home_team.penalties }}) {% endif %}
+                          -  
+                          {% if m.away_team_country == m.winner_code %} <span class="badge text-bg-success">{{ m.away_team.goals }}</span>
+                          {% elif m.home_team_country == m.winner_code %} <span class="badge text-bg-danger">{{ m.away_team.goals }}</span>
+                          {% elif m.winner == "Draw" %} <span class="badge text-bg-secondary">{{ m.away_team.goals }}</span>{% endif %} 
+                        {% if m.away_team.penalties != 0 %} ({{ m.away_team.penalties }}) {% endif %}
+                        {% elif m.status == "in_progress" %} In Progress
+                        {% else %} Future Match 
+                        {% endif %}
+                    </td>
+                <td>{% if m.stage_name == "Quarter-final" %} Quarter Finalist 2 
+                    {% elif m.stage_name == "Round of 16" %} Round of 16 
+                    {% elif m.stage_name == "Semi-final" %} Semi Finalist 2 
+                    {% elif m.stage_name == "Play-off for third place" %} Play-off for third place 
+                    {% elif m.stage_name == "Final" %} Finalist 2
+                    {% elif m.away_team_country == m.winner_code %} <span style="color:green;font-weight:600;">{{ m.away_team.name }}</span>
+                    {% elif m.home_team_country == m.winner_code %} <span style="color:red;font-weight:400;">{{ m.away_team.name }}</span>
+                    {% elif m.winner == "Draw" %} <span class="text-secondary">{{ m.away_team.name }}</span>
+                    {% else %}
+                    {{ m.away_team.name }} 
+                    {% endif %}
+            </tr>
+              {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <br>
+      <h2 class="display-6 text-center mb-4">All Matches</h2>
+      <div class="table-responsive">
+      <table class="table text-center">
+        <thead>
+            <tr>
+                <th style="width: 34%;"></th>
+                <th style="width: 22%;">Home Team</th>
+                <th style="width: 22%;">Score</th>
+                <th style="width: 22%;">Away Team</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for m in _matches %}
+            <tr>
+                <th scope="row" class="text-start">{{ m.datetime }}</th>
+                    <td>
+                        {% if m.stage_name == "Quarter-final" %} Quarter Finalist 1 
+                        {% elif m.stage_name == "Round of 16" %} Round of 16
+                        {% elif m.stage_name == "Semi-final" %} Semi Finalist 1 
+                        {% elif m.stage_name == "Play-off for third place" %} Play-off for third place
+                        {% elif m.stage_name == "Final" %} Finalist 1 
+                        {% elif m.home_team_country == m.winner_code %} <span style="color:green;font-weight:600;">{{ m.home_team.name }}</span>
+                        {% elif m.away_team_country == m.winner_code %} <span style="color:red;font-weight:400;">{{ m.home_team.name }}</span>
+                        {% elif m.winner == "Draw" %} <span class="text-secondary">{{ m.home_team.name }}</span>
+                        {% else %}
+                        {{ m.home_team.name }} 
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if m.status == "completed" %}
+                        {% if m.home_team_country == m.winner_code %} <span class="badge text-bg-success">{{ m.home_team.goals }}</span>
+                        {% elif m.away_team_country == m.winner_code %} <span class="badge text-bg-danger">{{ m.home_team.goals }}</span>
+                        {% elif m.winner == "Draw" %} <span class="badge text-bg-secondary">{{ m.home_team.goals }}</span>{% endif %}
+                        {% if m.home_team.penalties != 0 %} ({{ m.home_team.penalties }}) {% endif %}
+                          -  
+                          {% if m.away_team_country == m.winner_code %} <span class="badge text-bg-success">{{ m.away_team.goals }}</span>
+                          {% elif m.home_team_country == m.winner_code %} <span class="badge text-bg-danger">{{ m.away_team.goals }}</span>
+                          {% elif m.winner == "Draw" %} <span class="badge text-bg-secondary">{{ m.away_team.goals }}</span>{% endif %} 
+                        {% if m.away_team.penalties != 0 %} ({{ m.away_team.penalties }}) {% endif %}
+                        {% elif m.status == "in_progress" %} In Progress
+                        {% else %} Future Match 
+                        {% endif %}
+                    </td>
+                <td>{% if m.stage_name == "Quarter-final" %} Quarter Finalist 2 
+                    {% elif m.stage_name == "Round of 16" %} Round of 16 
+                    {% elif m.stage_name == "Semi-final" %} Semi Finalist 2 
+                    {% elif m.stage_name == "Play-off for third place" %} Play-off for third place 
+                    {% elif m.stage_name == "Final" %} Finalist 2
+                    {% elif m.away_team_country == m.winner_code %} <span style="color:green;font-weight:600;">{{ m.away_team.name }}</span>
+                    {% elif m.home_team_country == m.winner_code %} <span style="color:red;font-weight:400;">{{ m.away_team.name }}</span>
+                    {% elif m.winner == "Draw" %} <span class="text-secondary">{{ m.away_team.name }}</span>
+                    {% else %}
+                    {{ m.away_team.name }} 
+                    {% endif %}
+            </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+  <footer class="pt-4 my-md-5 pt-md-5 border-top">
+    <div class="row">
+      <div class="col-12 col-md">
+        <small class="d-block mb-3 text-muted">
+            &copy; <a href="https://github.com/kaissb/">GitHub</a> | <a href="https://pychronicles.medium.com/">Blog</a>
+        </small>
+      </div>
+    </div>
+  </footer>
+</div>
+
+
+    
+  </body>
+</html>
