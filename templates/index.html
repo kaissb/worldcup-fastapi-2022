@@ -298,9 +298,9 @@
                         {% elif m.stage_name == "Semi-final" %} Semi Finalist 1 
                         {% elif m.stage_name == "Play-off for third place" %} Play-off for third place
                         {% elif m.stage_name == "Final" %} Finalist 1 
-                        {% elif m.home_team_country == m.winner_code %} <img src="https://countryflagsapi.com/svg/{% if m.home_team.name == "Korea Republic" %}kor {% else %}{{ m.home_team.name }}{% endif %}" height="20px"/> <span style="color:green;font-weight:600;"><a href="/team/{{ m.home_team.country }}">{{ m.home_team.name }}</a></span>
-                        {% elif m.away_team_country == m.winner_code %} <img src="https://countryflagsapi.com/svg/{% if m.home_team.name == "Korea Republic" %}kor {% else %}{{ m.home_team.name }}{% endif %}" height="20px"/> <span style="color:red;font-weight:400;"><a href="/team/{{ m.home_team.country }}">{{ m.home_team.name }}</a></span>
-                        {% elif m.winner == "Draw" %} <img src="https://countryflagsapi.com/svg/{% if m.home_team.name == "Korea Republic" %}kor {% else %}{{ m.home_team.name }}{% endif %}" height="20px"/> <span class="text-secondary"><a href="/team/{{ m.home_team.country }}">{{ m.home_team.name }}</a></span>
+                        {% elif m.home_team_country == m.winner_code %} <img src="https://countryflagsapi.com/svg/{% if m.home_team.name == "Korea Republic" %}kor {% else %}{{ m.home_team.name }}{% endif %}" height="20px"/> <a style="color:green; font-weight:600;" href="/team/{{ m.home_team.country }}">{{ m.home_team.name }}</a>
+                        {% elif m.away_team_country == m.winner_code %} <img src="https://countryflagsapi.com/svg/{% if m.home_team.name == "Korea Republic" %}kor {% else %}{{ m.home_team.name }}{% endif %}" height="20px"/> <a style="color:red; font-weight:400;" href="/team/{{ m.home_team.country }}">{{ m.home_team.name }}</a>
+                        {% elif m.winner == "Draw" %} <img src="https://countryflagsapi.com/svg/{% if m.home_team.name == "Korea Republic" %}kor {% else %}{{ m.home_team.name }}{% endif %}" height="20px"/> <a class="text-secondary" href="/team/{{ m.home_team.country }}">{{ m.home_team.name }}</a>
                         {% else %}
                         <img src="https://countryflagsapi.com/svg/{% if m.home_team.name == "Korea Republic" %}kor {% else %}{{ m.home_team.name }}{% endif %}" height="20px"/> <a href="/team/{{ m.home_team.country }}">{{ m.home_team.name }}</a> 
                         {% endif %}
@@ -326,9 +326,9 @@
                         {% elif m.stage_name == "Semi-final" %} Semi Finalist 2 
                         {% elif m.stage_name == "Play-off for third place" %} Play-off for third place 
                         {% elif m.stage_name == "Final" %} Finalist 2
-                        {% elif m.away_team_country == m.winner_code %} <img src="https://countryflagsapi.com/svg/{% if m.away_team.name == "Korea Republic" %}kor {% else %}{{ m.away_team.name }}{% endif %}" height="20px"/> <span style="color:green;font-weight:600;"><a href="/team/{{ m.away_team.country }}">{{ m.away_team.name }}</a></span>
-                        {% elif m.home_team_country == m.winner_code %} <img src="https://countryflagsapi.com/svg/{% if m.away_team.name == "Korea Republic" %}kor {% else %}{{ m.away_team.name }}{% endif %}" height="20px"/> <span style="color:red;font-weight:400;"><a href="/team/{{ m.away_team.country }}">{{ m.away_team.name }}</a></span>
-                        {% elif m.winner == "Draw" %} <img src="https://countryflagsapi.com/svg/{% if m.away_team.name == "Korea Republic" %}kor {% else %}{{ m.away_team.name }}{% endif %}" height="20px"/> <span class="text-secondary"><a href="/team/{{ m.away_team.country }}">{{ m.away_team.name }}</a></span>
+                        {% elif m.away_team_country == m.winner_code %} <img src="https://countryflagsapi.com/svg/{% if m.away_team.name == "Korea Republic" %}kor {% else %}{{ m.away_team.name }}{% endif %}" height="20px"/> <a style="color:green;font-weight:600;" href="/team/{{ m.away_team.country }}">{{ m.away_team.name }}</a>
+                        {% elif m.home_team_country == m.winner_code %} <img src="https://countryflagsapi.com/svg/{% if m.away_team.name == "Korea Republic" %}kor {% else %}{{ m.away_team.name }}{% endif %}" height="20px"/> <a style="color:red;font-weight:400;" href="/team/{{ m.away_team.country }}">{{ m.away_team.name }}</a>
+                        {% elif m.winner == "Draw" %} <img src="https://countryflagsapi.com/svg/{% if m.away_team.name == "Korea Republic" %}kor {% else %}{{ m.away_team.name }}{% endif %}" height="20px"/> <a class="text-secondary" href="/team/{{ m.away_team.country }}">{{ m.away_team.name }}</a>
                         {% else %}
                         <img src="https://countryflagsapi.com/svg/{% if m.away_team.name == "Korea Republic" %}kor {% else %}{{ m.away_team.name }}{% endif %}" height="20px"/> <a href="/team/{{ m.away_team.country }}">{{ m.away_team.name }}</a> 
                         {% endif %}
@@ -360,11 +360,11 @@
                         {% elif m.stage_name == "Semi-final" %} Semi Finalist 1 
                         {% elif m.stage_name == "Play-off for third place" %} Play-off for third place
                         {% elif m.stage_name == "Final" %} Finalist 1 
-                        {% elif m.home_team_country == m.winner_code %} <img src="https://countryflagsapi.com/svg/{% if m.home_team.name == "Korea Republic" %}kor {% else %}{{ m.home_team.name }}{% endif %}" height="20px"/> <span style="color:green;font-weight:600;"><a href="/team/{{ m.home_team.country }}"><a href="/team/{{ m.home_team.country }}">{{ m.home_team.name }}</a></a></span>
-                        {% elif m.away_team_country == m.winner_code %} <img src="https://countryflagsapi.com/svg/{% if m.home_team.name == "Korea Republic" %}kor {% else %}{{ m.home_team.name }}{% endif %}" height="20px"/> <span style="color:red;font-weight:400;"><a href="/team/{{ m.home_team.country }}"><a href="/team/{{ m.home_team.country }}">{{ m.home_team.name }}</a></a></span>
-                        {% elif m.winner == "Draw" %} <img src="https://countryflagsapi.com/svg/{% if m.home_team.name == "Korea Republic" %}kor {% else %}{{ m.home_team.name }}{% endif %}" height="20px"/> <span class="text-secondary"><a href="/team/{{ m.home_team.country }}"><a href="/team/{{ m.home_team.country }}">{{ m.home_team.name }}</a></a></span>
+                        {% elif m.home_team_country == m.winner_code %} <img src="https://countryflagsapi.com/svg/{% if m.home_team.name == "Korea Republic" %}kor {% else %}{{ m.home_team.name }}{% endif %}" height="20px"/> <a style="color:green;font-weight:600;" href="/team/{{ m.home_team.country }}">{{ m.home_team.name }}</a>
+                        {% elif m.away_team_country == m.winner_code %} <img src="https://countryflagsapi.com/svg/{% if m.home_team.name == "Korea Republic" %}kor {% else %}{{ m.home_team.name }}{% endif %}" height="20px"/> <a style="color:red;font-weight:400;" href="/team/{{ m.home_team.country }}">{{ m.home_team.name }}</a>
+                        {% elif m.winner == "Draw" %} <img src="https://countryflagsapi.com/svg/{% if m.home_team.name == "Korea Republic" %}kor {% else %}{{ m.home_team.name }}{% endif %}" height="20px"/> <a class="text-secondary" href="/team/{{ m.home_team.country }}">{{ m.home_team.name }}</a>
                         {% else %}
-                        <img src="https://countryflagsapi.com/svg/{% if m.home_team.name == "Korea Republic" %}kor {% else %}{{ m.home_team.name }}{% endif %}" height="20px"/> <a href="/team/{{ m.home_team.country }}"><a href="/team/{{ m.home_team.country }}">{{ m.home_team.name }}</a></a> 
+                        <img src="https://countryflagsapi.com/svg/{% if m.home_team.name == "Korea Republic" %}kor {% else %}{{ m.home_team.name }}{% endif %}" height="20px"/> <a href="/team/{{ m.home_team.country }}">{{ m.home_team.name }}</a>
                         {% endif %}
                     </td>
                     <td>
@@ -388,9 +388,9 @@
                         {% elif m.stage_name == "Semi-final" %} Semi Finalist 2 
                         {% elif m.stage_name == "Play-off for third place" %} Play-off for third place 
                         {% elif m.stage_name == "Final" %} Finalist 2
-                        {% elif m.away_team_country == m.winner_code %} <img src="https://countryflagsapi.com/svg/{% if m.away_team.name == "Korea Republic" %}kor {% else %}{{ m.away_team.name }}{% endif %}" height="20px"/> <span style="color:green;font-weight:600;"><a href="/team/{{ m.away_team.country }}">{{ m.away_team.name }}</a></span>
-                        {% elif m.home_team_country == m.winner_code %} <img src="https://countryflagsapi.com/svg/{% if m.away_team.name == "Korea Republic" %}kor {% else %}{{ m.away_team.name }}{% endif %}" height="20px"/> <span style="color:red;font-weight:400;"><a href="/team/{{ m.away_team.country }}">{{ m.away_team.name }}</a></span>
-                        {% elif m.winner == "Draw" %} <img src="https://countryflagsapi.com/svg/{% if m.away_team.name == "Korea Republic" %}kor {% else %}{{ m.away_team.name }}{% endif %}" height="20px"/> <span class="text-secondary"><a href="/team/{{ m.away_team.country }}">{{ m.away_team.name }}</a></span>
+                        {% elif m.away_team_country == m.winner_code %} <img src="https://countryflagsapi.com/svg/{% if m.away_team.name == "Korea Republic" %}kor {% else %}{{ m.away_team.name }}{% endif %}" height="20px"/> <a style="color:green;font-weight:600;" href="/team/{{ m.away_team.country }}">{{ m.away_team.name }}</a>
+                        {% elif m.home_team_country == m.winner_code %} <img src="https://countryflagsapi.com/svg/{% if m.away_team.name == "Korea Republic" %}kor {% else %}{{ m.away_team.name }}{% endif %}" height="20px"/> <a style="color:red;font-weight:400;" href="/team/{{ m.away_team.country }}">{{ m.away_team.name }}</a>
+                        {% elif m.winner == "Draw" %} <img src="https://countryflagsapi.com/svg/{% if m.away_team.name == "Korea Republic" %}kor {% else %}{{ m.away_team.name }}{% endif %}" height="20px"/> <a class="text-secondary"href="/team/{{ m.away_team.country }}">{{ m.away_team.name }}</a>
                         {% else %}
                         <img src="https://countryflagsapi.com/svg/{% if m.away_team.name == "Korea Republic" %}kor {% else %}{{ m.away_team.name }}{% endif %}" height="20px"/> <a href="/team/{{ m.away_team.country }}">{{ m.away_team.name }}</a> 
                         {% endif %}
