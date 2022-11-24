@@ -103,34 +103,15 @@
               <h4 class="my-0 fw-normal">Current Games!</h4>
             </div>
             <div class="card-body">
-                <div class="row row-cols-1 row-cols-md-2 mb-3 text-center">
-                    <div class="col">
-                        <div class="card">
-                            <div class="card-body">
-                                <p>Time: <strong>{{ m.time }}</strong></p> 
-                                <p>Humidity: <strong>{{ m.weather.humidity }}</strong></p> 
-                                <p>Temperature: <strong>{{ m.weather.temp_celsius }} °C</strong></p> 
-                                <p>State: <strong>{{ m.weather.description }}</strong></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="card">
-                            <div class="card-body">
-                                <p>Referee: <strong>{% for r in m.officials %}{% if r.role == "Referee" %}{{ r.name }} ({{ r.country }}){% endif %}{% endfor %}</strong></p> 
-                                <p>Assistant Referee 1: <strong>{% for r in m.officials %}{% if r.role == "Assistant Referee 1" %}{{ r.name }} ({{ r.country }}){% endif %}{% endfor %}</strong></p> 
-                                <p>Assistant Referee 2: <strong>{% for r in m.officials %}{% if r.role == "Assistant Referee 2" %}{{ r.name }} ({{ r.country }}){% endif %}{% endfor %}</strong></p> 
-                                <p>Fourth official: <strong>{% for r in m.officials %}{% if r.role == "Fourth official" %}{{ r.name }} ({{ r.country }}){% endif %}{% endfor %}</strong></p> 
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
                 
                 <div class="row row-cols-1 row-cols-md-2 mb-3 text-center">
                   <div class="col">
                     <div class="card mb-4 rounded-3 shadow-sm {% if m.home_team.goals > m.away_team.goals %}border-primary{% endif %}">
                       <div class="card-header py-3  {% if m.home_team.goals > m.away_team.goals %}text-bg-primary border-primary{% endif %}">
-                        <h4 class="my-0 fw-normal"><a href="/team/{{ m.home_team.country }}">{{ m.home_team.name }}</a></h4><h6 class="card-title pricing-card-title">{{ m.home_team_lineup.tactics }}</h6>
+                        <img src="https://countryflagsapi.com/svg/{% if m.home_team.name == "Korea Republic" %}kor {% else %}{{ m.home_team.name }}{% endif %}" height="100px"/>
+                        <h4 class="my-0 fw-normal"><a href="/team/{{ m.home_team.country }}">{{ m.home_team.name }}</a></h4>
+                        <h6 class="card-title pricing-card-title">{{ m.home_team_lineup.tactics }}</h6>
                       </div>
                       <div class="card-body">
                         <h1 class="card-title pricing-card-title">{{ m.home_team.goals }}</h1>
@@ -140,19 +121,21 @@
                     <h6>Players:</h6>
                         <ul class="list-unstyled mt-3 mb-4">
                             {% for p in m.home_team_lineup.starting_eleven %}
-                            <li><strong>{{ p.name }}</strong> ({{ p.shirt_number }}) - {{ p.position }}</li>
+                            <li><strong>{{ p.name }}</strong> ({{ p.shirt_number }})</li>
                             {% endfor %}
                         </ul>
+                    
+                    {% if m.home_team_events.type_of_event == "goal" %}
                     <h6>Goals:</h6>
-                    {% if m.home_team_events %}
                         <ul class="list-unstyled mt-3 mb-4">
                             {% for p in m.home_team_events %}
                             <li>{% if p.type_of_event == "goal" %} {{ p.player }} - {{ p.time }} {% endif %}</li>
                             {% endfor %}
                         </ul>
                     {% endif %}
+                    
+                    {% if m.home_team_events.type_of_event == "substitution" %}
                     <h6>Substitutions:</h6>
-                    {% if m.home_team_events %}
                         <ul class="list-unstyled mt-3 mb-4">
                             {% for p in m.home_team_events %}
                             <li>{% if p.type_of_event == "substitution" %} {{ p.player }} - {{ p.time }} {% endif %}</li>
@@ -163,35 +146,65 @@
                   <div class="col">
                     <div class="card mb-4 rounded-3 shadow-sm {% if m.away_team.goals > m.home_team.goals %}border-primary{% endif %}">
                         <div class="card-header py-3  {% if m.away_team.goals > m.home_team.goals %}text-bg-primary border-primary{% endif %}">
+                          <img src="https://countryflagsapi.com/svg/{% if m.away_team.name == "Korea Republic" %}kor {% else %}{{ m.away_team.name }}{% endif %}" height="100px"/>
                         <h4 class="my-0 fw-normal"><a href="/team/{{ m.away_team.country }}">{{ m.away_team.name }}</a></h4>
+                        <h6 class="card-title pricing-card-title">{{ m.away_team_lineup.tactics }}</h6>
                       </div>
                       <div class="card-body">
                         <h1 class="card-title pricing-card-title">{{ m.away_team.goals }}</h1>
-                        <h6 class="card-title pricing-card-title">{{ m.away_team_lineup.tactics }}</h6>
+                        
                       </div>
                     </div>
                     <h6>Players:</h6>
                         <ul class="list-unstyled mt-3 mb-4">
                             {% for p in m.away_team_lineup.starting_eleven %}
-                            <li><strong>{{ p.name }}</strong> ({{ p.shirt_number }}) - {{ p.position }}</li>
+                            <li><strong>{{ p.name }}</strong> ({{ p.shirt_number }})</li>
                             {% endfor %}
                         </ul>
+                    
+                    {% if m.away_team_events.type_of_event == "goal" %}
                     <h6>Goals:</h6>
-                    {% if m.away_team_events %}
                         <ul class="list-unstyled mt-3 mb-4">
                             {% for p in m.away_team_events %}
                             <li>{% if p.type_of_event == "goal" %} {{ p.player }} - {{ p.time }} {% endif %}</li>
                             {% endfor %}
                         </ul>
                     {% endif %}
+                    
+                    {% if m.away_team_events.type_of_event == "substitution" %}
                     <h6>Substitutions:</h6>
-                    {% if m.away_team_events %}
                         <ul class="list-unstyled mt-3 mb-4">
                             {% for p in m.away_team_events %}
                             <li>{% if p.type_of_event == "substitution" %} {{ p.player }} - {{ p.time }} {% endif %}</li>
                             {% endfor %}
                         </ul>
                     {% endif %}
+                  </div>
+                </div>
+
+                <div class="row row-cols-1 row-cols-md-1 mb-3 text-center">
+                  <div class="col">
+                    <div class="row">
+                      <div class="col-12">
+                        <div class="card">
+                          <div class="card-body">
+                            <p>Time: <strong>{{ m.time }}</strong></p> 
+                            <p>Humidity: <strong>{{ m.weather.humidity }}</strong></p> 
+                            <p>Temperature: <strong>{{ m.weather.temp_celsius }} °C</strong></p> 
+                            <p>State: <strong>{{ m.weather.description }}</strong></p>
+                          </div>
+                        </div>
+                        <br>
+                        <div class="card">
+                          <div class="card-body">
+                            <p>Referee: <strong>{% for r in m.officials %}{% if r.role == "Referee" %}{{ r.name }} ({{ r.country }}){% endif %}{% endfor %}</strong></p> 
+                            <p>Assistant Referee 1: <strong>{% for r in m.officials %}{% if r.role == "Assistant Referee 1" %}{{ r.name }} ({{ r.country }}){% endif %}{% endfor %}</strong></p> 
+                            <p>Assistant Referee 2: <strong>{% for r in m.officials %}{% if r.role == "Assistant Referee 2" %}{{ r.name }} ({{ r.country }}){% endif %}{% endfor %}</strong></p> 
+                            <p>Fourth official: <strong>{% for r in m.officials %}{% if r.role == "Fourth official" %}{{ r.name }} ({{ r.country }}){% endif %}{% endfor %}</strong></p> 
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 
