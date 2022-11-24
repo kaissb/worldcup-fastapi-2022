@@ -17,3 +17,10 @@ async def index(request: Request):
         "_teams": teams().json(),
     }
     return templates.TemplateResponse("index.html", context)
+
+
+@app.get('/team/{code}')
+async def team_view(request: Request, code: str):
+    team_data = team(code).json()
+    print(team_data)
+    return 1
