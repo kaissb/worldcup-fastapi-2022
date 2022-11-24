@@ -222,16 +222,16 @@
         <table class="table text-center">
           <thead>
               <tr>
-                  <th style="width: 34%;"></th>
-                  <th style="width: 22%;">Home Team</th>
-                  <th style="width: 22%;">Score</th>
-                  <th style="width: 22%;">Away Team</th>
+                  <th style="width: 40%;"></th>
+                  <th style="width: 20%;">Home Team</th>
+                  <th style="width: 20%;">Score</th>
+                  <th style="width: 20%;">Away Team</th>
               </tr>
           </thead>
           <tbody>
               {% for m in _matches_today %}
               <tr>
-                <th scope="row" class="text-start">{{ m.datetime[:10] }} @ {{ m.datetime[11:13] }}h{{ m.datetime[14:16] }}</th>
+                <th scope="row" class="text-start">{{ m.datetime[:10] }} @ {{ m.datetime[11:13] }}h{{ m.datetime[14:16] }} <small style="font-weight:400">in {{ m.venue }}, {{ m.location }}</small></th>
                     <td>
                         {% if m.stage_name == "Quarter-final" %} Quarter Finalist 1 
                         {% elif m.stage_name == "Round of 16" %} Round of 16
@@ -284,16 +284,16 @@
       <table class="table text-center">
         <thead>
             <tr>
-                <th style="width: 34%;"></th>
-                <th style="width: 22%;">Home Team</th>
-                <th style="width: 22%;">Score</th>
-                <th style="width: 22%;">Away Team</th>
+                <th style="width: 40%;"></th>
+                <th style="width: 20%;">Home Team</th>
+                <th style="width: 20%;">Score</th>
+                <th style="width: 20%;">Away Team</th>
             </tr>
         </thead>
         <tbody>
             {% for m in _matches %}
             <tr>
-                <th scope="row" class="text-start">{{ m.datetime[:10] }} @ {{ m.datetime[11:13] }}h{{ m.datetime[14:16] }}</th>
+                <th scope="row" class="text-start">{{ m.datetime[:10] }} @ {{ m.datetime[11:13] }}h{{ m.datetime[14:16] }} <small style="font-weight:400">in {{ m.venue }}, {{ m.location }}</small></th>
                     <td>
                         {% if m.stage_name == "Quarter-final" %} Quarter Finalist 1 
                         {% elif m.stage_name == "Round of 16" %} Round of 16
