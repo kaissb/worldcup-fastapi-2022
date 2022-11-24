@@ -125,7 +125,7 @@
                             {% endfor %}
                         </ul>
                     
-                    {% if m.home_team_events.type_of_event == "goal" %}
+                    {% if m.home_team_events %}
                     <h6>Goals:</h6>
                         <ul class="list-unstyled mt-3 mb-4">
                             {% for p in m.home_team_events %}
@@ -134,7 +134,7 @@
                         </ul>
                     {% endif %}
                     
-                    {% if m.home_team_events.type_of_event == "substitution" %}
+                    {% if m.home_team_events %}
                     <h6>Substitutions:</h6>
                         <ul class="list-unstyled mt-3 mb-4">
                             {% for p in m.home_team_events %}
@@ -162,7 +162,7 @@
                             {% endfor %}
                         </ul>
                     
-                    {% if m.away_team_events.type_of_event == "goal" %}
+                    {% if m.away_team_events %}
                     <h6>Goals:</h6>
                         <ul class="list-unstyled mt-3 mb-4">
                             {% for p in m.away_team_events %}
@@ -171,7 +171,7 @@
                         </ul>
                     {% endif %}
                     
-                    {% if m.away_team_events.type_of_event == "substitution" %}
+                    {% if m.away_team_events %}
                     <h6>Substitutions:</h6>
                         <ul class="list-unstyled mt-3 mb-4">
                             {% for p in m.away_team_events %}
