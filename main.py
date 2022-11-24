@@ -22,5 +22,18 @@ async def index(request: Request):
 @app.get('/team/{code}')
 async def team_view(request: Request, code: str):
     team_data = team(code).json()
-    print(team_data)
-    return 1
+
+    context = {
+        "request": request,
+        "_team_data": team_data,
+        "_name": team_data.get("name"),
+        "_wins": team_data.get("wins"),
+        "_draws": team_data.get("draws"),
+        "_losses": team_data.get("losses"),
+        "_games_played": team_data.get("games_played"),
+        "_group_points": team_data.get("group_points"),
+        "_goals_for": team_data.get("goals_for"),
+        "_goals_against": team_data.get("goals_against"),
+        "_goal_differential": team_data.get("goal_differential"),
+    }
+    return templates.TemplateResponse("team.html", context)
