@@ -107,13 +107,13 @@
                 
                 <div class="row row-cols-1 row-cols-md-2 mb-3 text-center">
                   <div class="col">
-                    <div class="card mb-4 rounded-3 shadow-sm {% if m.home_team.goals > m.away_team.goals %}border-primary{% endif %}">
-                      <div class="card-header py-3  {% if m.home_team.goals > m.away_team.goals %}text-bg-primary border-primary{% endif %}">
+                    <div class="card mb-4 rounded-3 shadow-sm">
+                      <div class="card-header py-3">
                         <img src="https://countryflagsapi.com/svg/{% if m.home_team.name == "Korea Republic" %}kor {% else %}{{ m.home_team.name }}{% endif %}" height="100px"/>
                         <h4 class="my-0 fw-normal"><a href="/team/{{ m.home_team.country }}">{{ m.home_team.name }}</a></h4>
                         <h6 class="card-title pricing-card-title">{{ m.home_team_lineup.tactics }}</h6>
                       </div>
-                      <div class="card-body">
+                      <div class="card-body {% if m.home_team.goals > m.away_team.goals %}text-bg-primary border-primary{% endif %}">
                         <h1 class="card-title pricing-card-title">{{ m.home_team.goals }}</h1>
                         
                       </div>
@@ -144,13 +144,13 @@
                     {% endif %}
                   </div>
                   <div class="col">
-                    <div class="card mb-4 rounded-3 shadow-sm {% if m.away_team.goals > m.home_team.goals %}border-primary{% endif %}">
-                        <div class="card-header py-3  {% if m.away_team.goals > m.home_team.goals %}text-bg-primary border-primary{% endif %}">
+                    <div class="card mb-4 rounded-3 shadow-sm">
+                        <div class="card-header py-3">
                           <img src="https://countryflagsapi.com/svg/{% if m.away_team.name == "Korea Republic" %}kor {% else %}{{ m.away_team.name }}{% endif %}" height="100px"/>
                         <h4 class="my-0 fw-normal"><a href="/team/{{ m.away_team.country }}">{{ m.away_team.name }}</a></h4>
                         <h6 class="card-title pricing-card-title">{{ m.away_team_lineup.tactics }}</h6>
                       </div>
-                      <div class="card-body">
+                      <div class="card-body {% if m.away_team.goals > m.home_team.goals %}text-bg-primary border-primary{% endif %}">
                         <h1 class="card-title pricing-card-title">{{ m.away_team.goals }}</h1>
                         
                       </div>
