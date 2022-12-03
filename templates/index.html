@@ -294,7 +294,7 @@
                 <th scope="row" class="text-start">{{ m.datetime[:10] }} @ {{ m.datetime[11:13] }}h{{ m.datetime[14:16] }} GMT/UTC <small style="font-weight:400">in {{ m.venue }}, {{ m.location }}</small></th>
                     <td>
                         {% if m.stage_name == "Quarter-final" %} Quarter Finalist 1 
-                        {% elif m.stage_name == "Round of 16" %} Round of 16
+                        {% elif m.stage_name == "Round of 16" %} {{ m.home_team.name }}
                         {% elif m.stage_name == "Semi-final" %} Semi Finalist 1 
                         {% elif m.stage_name == "Play-off for third place" %} Play-off for third place
                         {% elif m.stage_name == "Final" %} Finalist 1 
@@ -322,7 +322,7 @@
                     </td>
                     <td>
                         {% if m.stage_name == "Quarter-final" %} Quarter Finalist 2 
-                        {% elif m.stage_name == "Round of 16" %} Round of 16 
+                        {% elif m.stage_name == "Round of 16" %} {{ m.away_team.name }}
                         {% elif m.stage_name == "Semi-final" %} Semi Finalist 2 
                         {% elif m.stage_name == "Play-off for third place" %} Play-off for third place 
                         {% elif m.stage_name == "Final" %} Finalist 2
@@ -356,7 +356,7 @@
                 <th scope="row" class="text-start">{{ m.datetime[:10] }} @ {{ m.datetime[11:13] }}h{{ m.datetime[14:16] }} GMT/UTC <small style="font-weight:400">in {{ m.venue }}, {{ m.location }}</small></th>
                     <td>
                         {% if m.stage_name == "Quarter-final" %} Quarter Finalist 1 
-                        {% elif m.stage_name == "Round of 16" %} Round of 16
+                        {% elif m.stage_name == "Round of 16" %} {{ m.home_team.name }}
                         {% elif m.stage_name == "Semi-final" %} Semi Finalist 1 
                         {% elif m.stage_name == "Play-off for third place" %} Play-off for third place
                         {% elif m.stage_name == "Final" %} Finalist 1 
@@ -384,7 +384,7 @@
                     </td>
                     <td>
                         {% if m.stage_name == "Quarter-final" %} Quarter Finalist 2 
-                        {% elif m.stage_name == "Round of 16" %} Round of 16 
+                        {% elif m.stage_name == "Round of 16" %} {{ m.away_team.name }}
                         {% elif m.stage_name == "Semi-final" %} Semi Finalist 2 
                         {% elif m.stage_name == "Play-off for third place" %} Play-off for third place 
                         {% elif m.stage_name == "Final" %} Finalist 2
