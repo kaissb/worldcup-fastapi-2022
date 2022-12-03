@@ -10,19 +10,6 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 
 
 @app.get("/")
-async def test(request: Request):
-
-    context = {
-        "request": request,
-        "_matches": matches().json(),
-        "_matches_current": matches_current().json(),
-        "_matches_today": matches_today().json(),
-        "_teams": teams().json(),
-    }
-    return templates.TemplateResponse("test.html", context)
-
-
-@app.get("/")
 async def index(request: Request):
     context = {
         "request": request,
